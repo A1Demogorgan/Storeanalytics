@@ -3,7 +3,7 @@ import {
   ensureDatasetLoaded,
   executeSql,
   getInitStatus,
-} from "@/lib/duckdb";
+} from "@/lib/dataset";
 
 export const runtime = "nodejs";
 
@@ -218,7 +218,7 @@ export async function POST(req: Request) {
     const salesTrend = (await executeSql(`
       SELECT * FROM (
         SELECT
-          strftime("Fiscal Date", '%Y-%m-%d') AS label,
+          strftime('%Y-%m-%d', "Fiscal Date") AS label,
           sum("Net Sales Retail Amt") AS value
         FROM synthetic_store_daily
         WHERE "Location Number and Desc" IN (${locationsSql})
@@ -232,7 +232,7 @@ export async function POST(req: Request) {
     const qtyTrend = (await executeSql(`
       SELECT * FROM (
         SELECT
-          strftime("Fiscal Date", '%Y-%m-%d') AS label,
+          strftime('%Y-%m-%d', "Fiscal Date") AS label,
           sum("Net Sales Qty") AS value
         FROM synthetic_store_daily
         WHERE "Location Number and Desc" IN (${locationsSql})
@@ -296,7 +296,7 @@ export async function POST(req: Request) {
     const dailyDeepDive = (await executeSql(`
       SELECT * FROM (
         SELECT
-          strftime("Fiscal Date", '%Y-%m-%d') AS label,
+          strftime('%Y-%m-%d', "Fiscal Date") AS label,
           sum("Net Sales Retail Amt") AS sales,
           sum("Net Sales Qty") AS quantity,
           sum("Clr Net Sales Retail Amt") AS clearance_sales,

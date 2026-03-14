@@ -75,6 +75,21 @@ type StoredChatSession = {
   memorySummary?: string;
 };
 
+async function readJsonResponse<T>(response: Response): Promise<T> {
+  const raw = await response.text();
+  if (!raw) return {} as T;
+
+  try {
+    return JSON.parse(raw) as T;
+  } catch {
+    const contentType = response.headers.get("content-type") || "unknown";
+    const preview = raw.slice(0, 160).replace(/\s+/g, " ").trim();
+    throw new Error(
+      `Expected JSON but received ${contentType}. Response preview: ${preview || "empty response"}`,
+    );
+  }
+}
+
 const roleConfig: Array<{
   id: Role;
   label: string;
@@ -430,14 +445,11 @@ export default function Home() {
     const pollInit = async () => {
       try {
         const response = await fetch("/api/init");
-        const raw = await response.text();
-        const data = raw
-          ? (JSON.parse(raw) as {
-              status?: string;
-              state?: string;
-              error?: string;
-            })
-          : {};
+        const data = await readJsonResponse<{
+          status?: string;
+          state?: string;
+          error?: string;
+        }>(response);
         if (!active) return;
         const nextState = (data.state || data.status || "idle") as
           | "idle"
@@ -479,10 +491,9 @@ export default function Home() {
               viewLocation !== "__portfolio__" ? viewLocation : undefined,
           }),
         });
-        const raw = await response.text();
-        const data = raw
-          ? (JSON.parse(raw) as DashboardPayload & { error?: string })
-          : ({} as DashboardPayload & { error?: string });
+        const data = await readJsonResponse<DashboardPayload & { error?: string }>(
+          response,
+        );
         if (!response.ok) throw new Error(data.error || "Failed to load dashboard.");
         setDashboard(data);
 
@@ -517,10 +528,9 @@ export default function Home() {
             period: "WTD",
           }),
         });
-        const raw = await response.text();
-        const data = raw
-          ? (JSON.parse(raw) as DashboardPayload & { error?: string })
-          : ({} as DashboardPayload & { error?: string });
+        const data = await readJsonResponse<DashboardPayload & { error?: string }>(
+          response,
+        );
         if (!response.ok) throw new Error(data.error || "Failed to load locations.");
         const stores = data.availableLocations ?? [];
         setLocationOptions(stores);
@@ -654,10 +664,11 @@ export default function Home() {
           },
         }),
       });
-      const raw = await response.text();
-      const data = raw
-        ? (JSON.parse(raw) as { reply?: string; error?: string; sql?: string })
-        : {};
+      const data = await readJsonResponse<{
+        reply?: string;
+        error?: string;
+        sql?: string;
+      }>(response);
       if (!response.ok) {
         throw new Error(data.error || "Request failed.");
       }
@@ -768,10 +779,9 @@ export default function Home() {
             method: "POST",
             body: formData,
           });
-          const raw = await response.text();
-          const data = raw
-            ? (JSON.parse(raw) as { text?: string; error?: string })
-            : {};
+          const data = await readJsonResponse<{ text?: string; error?: string }>(
+            response,
+          );
           if (!response.ok) {
             throw new Error(data.error || "Transcription failed.");
           }

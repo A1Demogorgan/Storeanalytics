@@ -7,19 +7,17 @@ import {
   getLocationMatch,
   getInitStatus,
   getSchemaSummary,
-} from "@/lib/duckdb";
+} from "@/lib/dataset";
 
 export const runtime = "nodejs";
 
 const sqlAgentInstructions =
-  "You convert questions into SQL for DuckDB. Use only the provided schema. " +
+  "You convert questions into SQL for SQLite. Use only the provided schema. " +
   "Return a single SQL query and nothing else. Prefer LIMIT 200 for non-aggregate queries. " +
   "Always double-quote column names that contain spaces or symbols (e.g., \"Department Number and Desc\"). " +
-  "If using date/time functions (strftime, date_trunc, extract), cast string date columns to DATE or TIMESTAMP first. " +
-  "DuckDB strftime signature is strftime(date_or_timestamp, format); do not pass format first. " +
-  "Do not call strftime with more than 2 arguments. " +
-  "Only call strftime on DATE/TIMESTAMP expressions; avoid passing VARCHAR unless it is explicitly cast to DATE/TIMESTAMP. " +
-  "Use DuckDB date math like CURRENT_DATE - INTERVAL '1 year' or dateadd('year', -1, CURRENT_DATE) (do not use date_sub). " +
+  "For dates, use SQLite functions such as date(...), datetime(...), and strftime(format, value). " +
+  "SQLite strftime signature is strftime(format, date_or_timestamp). " +
+  "Use SQLite date math like date('now', '-1 year'); do not use INTERVAL, dateadd, or date_sub. " +
   "For ATV/UPT, use the synthetic_store_atv_upt table and filter by Bucket (YESTERDAY, WTD, MTD, YTD) as needed. " +
   "For department performance, use the synthetic_store_departments table and filter by Time Level - REQUIRED as needed. " +
   "Use synthetic_store_sales_margin only for sales questions with buckets like WTD/MTD/YTD. " +
@@ -220,7 +218,6 @@ export async function POST(req: Request) {
     const sql = rawSql
       .replace(/```sql|```/gi, "")
       .replace(/\[([^\]]+)\]/g, (_match, name) => `"${name.replace(/"/g, '""')}"`)
-      .replace(/\bCAST\s*\(/gi, "TRY_CAST(")
       .trim();
 
     if (!sql) {

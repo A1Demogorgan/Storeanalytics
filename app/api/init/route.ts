@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { ensureDatasetLoaded, getDebugStatus, getInitStatus } from "@/lib/duckdb";
+import { ensureDatasetLoaded, getDebugStatus, getInitStatus } from "@/lib/dataset";
 
 export const runtime = "nodejs";
 

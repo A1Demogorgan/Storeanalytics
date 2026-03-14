@@ -2,6 +2,9 @@
   "name": "naturallangquery",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=22.5.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
@@ -10,7 +13,6 @@
   },
   "dependencies": {
     "@openai/agents": "^0.3.7",
-    "duckdb": "^1.1.1",
     "mock-aws-s3": "^4.0.2",
     "next": "16.1.1",
     "nock": "^14.0.10",
