@@ -1,12 +1,6 @@
 "use client";
 
-import { Oswald } from "next/font/google";
 import { useEffect, useMemo, useRef, useState } from "react";
-
-const brandFont = Oswald({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-});
 
 type Role =
   | "store_manager"
@@ -241,7 +235,7 @@ function syntheticSeries(
 ) {
   const points = dailyPointsForRange(range);
   return Array.from({ length: points }, (_, index) => {
-    const progress = points === 1 ? 1 : index / (points - 1);
+    const progress = index / (points - 1);
     const baseline = startValue + (endValue - startValue) * progress;
     const wobbleSeed = hashString(`${seriesKey}-${range}-${index}`) % 100;
     const wobble = ((wobbleSeed / 100) - 0.5) * Math.max(Math.abs(endValue) * 0.08, 1);
@@ -667,7 +661,7 @@ export default function Home() {
       if (!response.ok) {
         throw new Error(data.error || "Request failed.");
       }
-      const updatedMessages = [
+      const updatedMessages: ChatMessage[] = [
         ...nextMessages,
         {
           role: "assistant",
@@ -689,7 +683,7 @@ export default function Home() {
           role: "assistant",
           content: `Error: ${messageText}`,
         },
-      ]);
+      ] satisfies ChatMessage[]);
     } finally {
       setIsSending(false);
     }
@@ -1014,12 +1008,12 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center gap-1">
-                <span className={`${brandFont.className} text-xl uppercase tracking-tight text-white`}>
+                <span className="text-xl font-black uppercase tracking-tight text-white">
                   Best Buy
                 </span>
                 <span className="inline-flex h-3 w-5 rounded-sm bg-[#ffe000]" />
               </div>
-              <p className={`${brandFont.className} mt-1 text-[11px] uppercase tracking-[0.22em] text-[#c7dbff]`}>
+              <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.22em] text-[#c7dbff]">
                 Store Analytics
               </p>
             </div>

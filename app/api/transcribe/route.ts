@@ -40,9 +40,10 @@ export async function POST(req: Request) {
     azureForm.append("model", deployment);
     azureForm.append("file", file, file.name || "audio.webm");
 
+    const endpointBase = endpoint!.replace(/\/$/, "");
     const transcribeUrl =
       transcribeEndpoint ||
-      `${endpoint.replace(/\/$/, "")}/openai/deployments/${deployment}/audio/transcriptions?api-version=${apiVersion}`;
+      `${endpointBase}/openai/deployments/${deployment}/audio/transcriptions?api-version=${apiVersion}`;
 
     const headers: HeadersInit = {
       Accept: "application/json",
