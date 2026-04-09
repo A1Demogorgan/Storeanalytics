@@ -102,28 +102,28 @@ const roleConfig: Array<{
     label: "Store Manager",
     short: "Store",
     subtitle: "Single-store command center",
-    accent: "from-[#0a56d8] to-[#0038a8]",
+    accent: "from-[#f27000] to-[#d53b00]",
   },
   {
     id: "area_manager",
     label: "Area Manager",
     short: "Area",
     subtitle: "Two-store performance overview",
-    accent: "from-[#0a56d8] to-[#0038a8]",
+    accent: "from-[#f27000] to-[#d53b00]",
   },
   {
     id: "regional_manager",
     label: "Regional Manager",
     short: "Region",
     subtitle: "Four-store portfolio visibility",
-    accent: "from-[#0038a8] to-[#001e73]",
+    accent: "from-[#e95400] to-[#8f1d00]",
   },
   {
     id: "corporate",
     label: "Corporate",
     short: "Corp",
     subtitle: "All-store executive monitoring",
-    accent: "from-[#17326b] to-[#001e73]",
+    accent: "from-[#d53b00] to-[#5c1200]",
   },
 ];
 
@@ -198,10 +198,10 @@ function hashString(value: string) {
 
 function departmentIconStyle(name: string) {
   const themes = [
-    { bg: "bg-[#e5efff]", fg: "text-[#0046be]" },
-    { bg: "bg-[#fff8c4]", fg: "text-[#7a6200]" },
-    { bg: "bg-[#dbe7ff]", fg: "text-[#002f8f]" },
-    { bg: "bg-[#eef2f8]", fg: "text-[#27457f]" },
+    { bg: "bg-[#ffe8da]", fg: "text-[#d53b00]" },
+    { bg: "bg-[#fff1c9]", fg: "text-[#8a4f00]" },
+    { bg: "bg-[#ffd8bf]", fg: "text-[#a62d00]" },
+    { bg: "bg-[#fff0e5]", fg: "text-[#8e3f1e]" },
   ];
   return themes[hashString(name) % themes.length];
 }
@@ -815,7 +815,7 @@ export default function Home() {
           title: `${period} Sales`,
           value: formatCompactCurrency(dashboard.kpis.sales),
           subValue: formatCurrency(dashboard.kpis.sales),
-          tone: "from-[#ffffff] via-[#f7faff] to-[#e6efff]",
+          tone: "from-[#ffffff] via-[#fff7ef] to-[#ffe2cf]",
         },
         {
           key: "quantity" as KpiKey,
@@ -829,21 +829,21 @@ export default function Home() {
           title: "Gross Margin",
           value: formatCompactCurrency(dashboard.kpis.grossMarginAmount),
           subValue: `${dashboard.kpis.grossMarginPercent.toFixed(1)}% margin rate`,
-          tone: "from-[#ffffff] via-[#f3f8ff] to-[#dbe8ff]",
+          tone: "from-[#ffffff] via-[#fff1e8] to-[#ffd8bf]",
         },
         {
           key: "inventoryScore" as KpiKey,
           title: "Inventory Score",
           value: dashboard.kpis.inventoryScore.toFixed(2),
           subValue: "Inventory health index",
-          tone: "from-[#ffffff] via-[#f7f9fd] to-[#e7eef8]",
+          tone: "from-[#ffffff] via-[#fff8f1] to-[#f4dfd0]",
         },
         {
           key: "weeksOfSupply" as KpiKey,
           title: "Weeks Of Supply",
           value: dashboard.kpis.weeksOfSupply.toFixed(1),
           subValue: "Current supply runway",
-          tone: "from-[#ffffff] via-[#f7faff] to-[#dde7f7]",
+          tone: "from-[#ffffff] via-[#fff7ef] to-[#f7ddcf]",
         },
         {
           key: "atv" as KpiKey,
@@ -857,7 +857,7 @@ export default function Home() {
           title: "Basket Size",
           value: dashboard.kpis.basketSize.toFixed(2),
           subValue: "Units per transaction",
-          tone: "from-[#ffffff] via-[#f7fbff] to-[#e9f0ff]",
+          tone: "from-[#ffffff] via-[#fff7ef] to-[#ffe8d6]",
         },
       ]
     : [];
@@ -1010,20 +1010,22 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(120%_80%_at_20%_-20%,#1d5ed7_0%,#002d8a_42%,#001235_100%)] text-zinc-900 md:flex md:items-center md:justify-center md:p-6">
-      <div className="relative h-[100dvh] w-full overflow-hidden bg-[linear-gradient(180deg,#0a49bc_0_158px,#edf2fb_158px_100%)] md:h-[min(852px,calc(100dvh-1rem))] md:max-w-[430px] md:rounded-[2.6rem] md:border md:border-white/40 md:shadow-[0_40px_100px_-60px_rgba(0,20,73,0.55)]">
+    <div className="min-h-screen bg-[radial-gradient(120%_80%_at_18%_-20%,#ffb54a_0%,#f05a00_24%,#d51f00_48%,#471108_100%)] text-zinc-900 md:flex md:items-center md:justify-center md:p-6">
+      <div className="relative h-[100dvh] w-full overflow-hidden bg-[linear-gradient(180deg,#b82000_0_158px,#fff4e7_158px_100%)] md:h-[min(852px,calc(100dvh-1rem))] md:max-w-[430px] md:rounded-[2.6rem] md:border md:border-white/40 md:shadow-[0_40px_100px_-60px_rgba(71,17,8,0.55)]">
         <div className="pointer-events-none absolute left-1/2 top-2 z-30 hidden h-7 w-36 -translate-x-1/2 rounded-full bg-black/90 shadow-inner md:block" />
 
-        <header className="absolute inset-x-0 top-0 z-[70] border-b border-white/10 bg-[#0046be] px-4 pb-3 pt-11 text-white shadow-[0_14px_30px_-16px_rgba(0,20,73,0.95)] backdrop-blur">
+        <header className="absolute inset-x-0 top-0 z-[70] border-b border-white/10 bg-[linear-gradient(120deg,#b82000_0%,#ef5b0c_62%,#f7a400_100%)] px-4 pb-3 pt-11 text-white shadow-[0_14px_30px_-16px_rgba(71,17,8,0.95)] backdrop-blur">
           <div className="flex items-center justify-between">
             <div>
-              <div className="flex items-center gap-1">
-                <span className="text-xl font-black uppercase tracking-tight text-white">
-                  Best Buy
+              <div className="flex items-end gap-2">
+                <span className="text-[1.55rem] font-black tracking-[-0.06em] text-white">
+                  Catalyst
                 </span>
-                <span className="inline-flex h-3 w-5 rounded-sm bg-[#ffe000]" />
+                <span className="mb-1 text-[0.72rem] font-extrabold uppercase tracking-[0.08em] text-white/92">
+                  Brands
+                </span>
               </div>
-              <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.22em] text-[#c7dbff]">
+              <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.22em] text-[#ffe2c3]">
                 Store Analytics
               </p>
             </div>
@@ -1044,9 +1046,9 @@ export default function Home() {
 
         <main className="h-full overflow-y-auto px-4 pb-24 pt-28 md:pt-28">
             {!selectedRole ? (
-              <section className="rounded-[2rem] border border-[#b9cdfa] bg-white p-5 shadow-[0_30px_80px_-45px_rgba(0,29,107,0.45)] backdrop-blur">
+              <section className="rounded-[2rem] border border-[#efbf9c] bg-[linear-gradient(180deg,#fffaf5_0%,#fff4ec_100%)] p-5 shadow-[0_30px_80px_-45px_rgba(92,18,0,0.32)] backdrop-blur">
                 <div className="mb-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#0046be]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#d53b00]">
                     Store Analytics
                   </p>
                   <h1 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900">
@@ -1091,7 +1093,7 @@ export default function Home() {
                           setSettingsOpen(false);
                           setRoleSetupError("");
                         }}
-                        className="w-full rounded-2xl border border-[#d8e3fb] bg-[#f7faff] p-4 text-left shadow-[0_8px_24px_-20px_rgba(0,20,73,0.35)] transition hover:border-[#0a56d8]/60 hover:bg-white"
+                        className="w-full rounded-2xl border border-[#f2d3c4] bg-[#fff7ef] p-4 text-left shadow-[0_8px_24px_-20px_rgba(92,18,0,0.22)] transition hover:border-[#f27000]/60 hover:bg-white"
                       >
                         <div className="flex items-center justify-between">
                           <div>
@@ -1118,7 +1120,7 @@ export default function Home() {
                     <select
                       value={pendingStore}
                       onChange={(event) => setPendingStore(event.target.value)}
-                      className="w-full rounded-xl border border-[#cfdcff] bg-[#f7faff] px-3 py-2 text-sm text-zinc-900"
+                      className="w-full rounded-xl border border-[#f2d3c4] bg-[#fff7ef] px-3 py-2 text-sm text-zinc-900"
                     >
                       {(locationOptions.length ? locationOptions : ["Loading stores..."]).map((location) => (
                         <option key={location} value={location}>
@@ -1134,7 +1136,7 @@ export default function Home() {
                           setPendingRole(null);
                           setRoleSetupError("");
                         }}
-                        className="rounded-xl border border-[#cfdcff] bg-[#f7faff] px-3 py-2 text-sm font-semibold text-[#27457f]"
+                        className="rounded-xl border border-[#f2d3c4] bg-[#fff7ef] px-3 py-2 text-sm font-semibold text-[#8e3f1e]"
                       >
                         Back
                       </button>
@@ -1155,7 +1157,7 @@ export default function Home() {
                           setPendingRole(null);
                           setRoleSetupError("");
                         }}
-                        className="rounded-xl bg-gradient-to-r from-[#ffe000] to-[#ffd100] px-3 py-2 text-sm font-semibold text-[#08214a] shadow-[0_12px_24px_-18px_rgba(255,209,0,0.9)]"
+                        className="rounded-xl bg-gradient-to-r from-[#ffb300] to-[#ffd15c] px-3 py-2 text-sm font-semibold text-[#3b160d] shadow-[0_12px_24px_-18px_rgba(255,179,0,0.75)]"
                       >
                         Continue
                       </button>
@@ -1165,10 +1167,10 @@ export default function Home() {
               </section>
             ) : (
               <>
-                <section className="rounded-[2rem] border border-[#b9cdfa] bg-white p-4 shadow-[0_30px_80px_-45px_rgba(0,29,107,0.45)] backdrop-blur">
+                <section className="rounded-[2rem] border border-[#efbf9c] bg-white p-4 shadow-[0_30px_80px_-45px_rgba(92,18,0,0.28)] backdrop-blur">
                   <div className="mb-4 flex items-start justify-between gap-3">
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#0046be]">
+                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#d53b00]">
                         {roleConfig.find((role) => role.id === selectedRole)?.label}
                       </p>
                       <h2 className="text-xl font-semibold tracking-tight text-zinc-900">
@@ -1188,7 +1190,7 @@ export default function Home() {
                         setChatOpen(false);
                         setSettingsOpen(false);
                       }}
-                      className="rounded-xl border border-[#cfdcff] bg-[#f7faff] px-3 py-1.5 text-xs font-medium text-[#27457f]"
+                      className="rounded-xl border border-[#f2d3c4] bg-[#fff7ef] px-3 py-1.5 text-xs font-medium text-[#8e3f1e]"
                     >
                       Switch
                     </button>
@@ -1208,8 +1210,8 @@ export default function Home() {
                         onClick={() => setPeriod(item)}
                         className={`rounded-xl px-3 py-2 text-xs font-semibold transition ${
                           period === item
-                            ? "bg-gradient-to-r from-[#ffe000] to-[#ffd100] text-[#08214a]"
-                            : "border border-[#cfdcff] bg-[#f7faff] text-[#27457f]"
+                            ? "bg-gradient-to-r from-[#ffb300] to-[#ffd15c] text-[#3b160d]"
+                            : "border border-[#f2d3c4] bg-[#fff7ef] text-[#8e3f1e]"
                         }`}
                       >
                         {item}
@@ -1225,7 +1227,7 @@ export default function Home() {
                       <select
                         value={viewLocation}
                         onChange={(event) => setViewLocation(event.target.value)}
-                        className="w-full rounded-xl border border-[#cfdcff] bg-[#f7faff] px-3 py-2 text-sm text-zinc-900"
+                        className="w-full rounded-xl border border-[#f2d3c4] bg-[#fff7ef] px-3 py-2 text-sm text-zinc-900"
                       >
                         <option value="__portfolio__">
                           Portfolio total ({dashboard.scopeLocations.length} stores)
@@ -1242,7 +1244,7 @@ export default function Home() {
 
                 <section className="mt-5 space-y-3">
                   {dashboardLoading ? (
-                    <div className="rounded-2xl border border-[#cfdcff] bg-white/90 p-4 text-sm text-zinc-600">
+                    <div className="rounded-2xl border border-[#f2d3c4] bg-white/90 p-4 text-sm text-zinc-600">
                       Loading KPIs...
                     </div>
                   ) : dashboardError ? (
@@ -1258,25 +1260,25 @@ export default function Home() {
                           setActiveKpi(card.key);
                           setDeepDiveRange("WTD");
                         }}
-                        className={`w-full rounded-[1.6rem] border border-[#b9cdfa] bg-gradient-to-r ${card.tone} px-4 py-4 text-left shadow-[0_14px_34px_-28px_rgba(0,29,107,0.35)]`}
+                        className={`w-full rounded-[1.6rem] border border-[#efbf9c] bg-gradient-to-r ${card.tone} px-4 py-4 text-left shadow-[0_14px_34px_-28px_rgba(92,18,0,0.2)]`}
                       >
                         <div className="mb-1 flex items-center justify-between">
-                          <p className="text-xs font-semibold tracking-wide text-[#27457f]">{card.title}</p>
-                          <span className="rounded-full bg-[#0046be] px-2 py-0.5 text-[10px] font-semibold text-white">
+                          <p className="text-xs font-semibold tracking-wide text-[#8e3f1e]">{card.title}</p>
+                          <span className="rounded-full bg-[#d53b00] px-2 py-0.5 text-[10px] font-semibold text-white">
                             KPI
                           </span>
                         </div>
-                        <p className="text-2xl font-semibold leading-tight text-[#08214a]">{card.value}</p>
-                        <p className="mt-1 text-xs text-[#33507d]">{card.subValue}</p>
-                        <p className="mt-2 text-xs font-semibold text-[#0046be]">Tap for deep dive</p>
+                        <p className="text-2xl font-semibold leading-tight text-[#3b160d]">{card.value}</p>
+                        <p className="mt-1 text-xs text-[#7c4a35]">{card.subValue}</p>
+                        <p className="mt-2 text-xs font-semibold text-[#d53b00]">Tap for deep dive</p>
                       </button>
                     ))
                   )}
                 </section>
 
-                <section className="mt-4 rounded-2xl border border-[#b9cdfa] bg-[#f4f7fc] p-4 shadow-[0_20px_50px_-35px_rgba(0,29,107,0.35)] backdrop-blur">
+                <section className="mt-4 rounded-2xl border border-[#efbf9c] bg-[#fff7ef] p-4 shadow-[0_20px_50px_-35px_rgba(92,18,0,0.18)] backdrop-blur">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#0046be]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#d53b00]">
                       Top Departments
                     </p>
                     <div className="mt-2 flex gap-3 overflow-x-auto pb-2">
@@ -1285,7 +1287,7 @@ export default function Home() {
                         return (
                           <div
                             key={department.department}
-                            className="min-w-[190px] rounded-2xl border border-[#cfdcff] bg-white px-3 py-3"
+                            className="min-w-[190px] rounded-2xl border border-[#f2d3c4] bg-white px-3 py-3"
                           >
                             <div className="flex items-start gap-2">
                               <span
@@ -1320,7 +1322,7 @@ export default function Home() {
                         return (
                           <div
                             key={department.department}
-                            className="min-w-[190px] rounded-2xl border border-[#dde5f2] bg-[#eef2f8] px-3 py-3"
+                            className="min-w-[190px] rounded-2xl border border-[#f1d7c7] bg-[#fff3ea] px-3 py-3"
                           >
                             <div className="flex items-start gap-2">
                               <span
@@ -1349,7 +1351,7 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={openChatFresh}
-                  className="absolute bottom-20 right-5 z-30 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#ffe000] to-[#ffd100] text-[#08214a] shadow-[0_20px_40px_-20px_rgba(255,209,0,0.95)]"
+                  className="absolute bottom-20 right-5 z-30 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#ffb300] to-[#ffd15c] text-[#3b160d] shadow-[0_20px_40px_-20px_rgba(255,179,0,0.8)]"
                   aria-label="Open chatbot"
                 >
                   <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
@@ -1361,10 +1363,10 @@ export default function Home() {
           </main>
 
           {activeKpi && dashboard ? (
-            <div className="absolute inset-x-0 bottom-0 top-[84px] z-40 flex flex-col bg-[#edf2fb]/95 px-4 pb-24 pt-4">
+            <div className="absolute inset-x-0 bottom-0 top-[84px] z-40 flex flex-col bg-[#fff4e7]/95 px-4 pb-24 pt-4">
               <div className="mb-3 flex items-center justify-between">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#0046be]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#d53b00]">
                     KPI Deep Dive
                   </p>
                   <h3 className="text-lg font-semibold text-zinc-900">{activeKpi}</h3>
@@ -1373,7 +1375,7 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => setActiveKpi(null)}
-                  className="rounded-lg border border-[#cfdcff] bg-white px-2 py-1 text-xs text-[#27457f]"
+                  className="rounded-lg border border-[#f2d3c4] bg-white px-2 py-1 text-xs text-[#8e3f1e]"
                 >
                   Back
                 </button>
@@ -1387,8 +1389,8 @@ export default function Home() {
                     onClick={() => setDeepDiveRange(range)}
                     className={`h-8 min-w-[92px] whitespace-nowrap rounded-full px-3 text-[11px] font-semibold tracking-wide ${
                       deepDiveRange === range
-                        ? "bg-gradient-to-r from-[#ffe000] to-[#ffd100] text-[#08214a]"
-                        : "border border-[#cfdcff] bg-white text-[#27457f]"
+                        ? "bg-gradient-to-r from-[#ffb300] to-[#ffd15c] text-[#3b160d]"
+                        : "border border-[#f2d3c4] bg-white text-[#8e3f1e]"
                     }`}
                   >
                     {range.replace("_", " ")}
@@ -1408,7 +1410,7 @@ export default function Home() {
                   return (
                     <section
                       key={series.key}
-                      className="rounded-2xl border border-[#b9cdfa] bg-white p-3"
+                      className="rounded-2xl border border-[#efbf9c] bg-white p-3"
                     >
                       <div className="mb-2 flex items-center justify-between">
                         <p className="text-sm font-semibold text-zinc-900">{series.label}</p>
@@ -1418,7 +1420,7 @@ export default function Home() {
                       </div>
 
                       {hasTimeline ? (
-                        <div className="rounded-xl border border-[#d6e2f9] bg-[#f7faff] p-2">
+                        <div className="rounded-xl border border-[#f2d3c4] bg-[#fff7ef] p-2">
                           <div className="flex gap-2">
                             <div className="flex w-14 shrink-0 flex-col justify-between py-1 text-[10px] text-zinc-500">
                               <span className="text-right">
@@ -1434,13 +1436,13 @@ export default function Home() {
                             <svg viewBox="0 0 300 110" className="h-32 w-full">
                               <defs>
                                 <linearGradient id={`line-${series.key}`} x1="0%" y1="0%" x2="100%" y2="0%">
-                                  <stop offset="0%" stopColor="#ffe000" />
-                                  <stop offset="100%" stopColor="#0046be" />
+                                  <stop offset="0%" stopColor="#ffb300" />
+                                  <stop offset="100%" stopColor="#d53b00" />
                                 </linearGradient>
                               </defs>
-                              <line x1="0" y1="0" x2="300" y2="0" stroke="#9db6ea" strokeDasharray="3 3" />
-                              <line x1="0" y1="55" x2="300" y2="55" stroke="#9db6ea" strokeDasharray="3 3" />
-                              <line x1="0" y1="110" x2="300" y2="110" stroke="#9db6ea" strokeDasharray="3 3" />
+                              <line x1="0" y1="0" x2="300" y2="0" stroke="#e8a77d" strokeDasharray="3 3" />
+                              <line x1="0" y1="55" x2="300" y2="55" stroke="#e8a77d" strokeDasharray="3 3" />
+                              <line x1="0" y1="110" x2="300" y2="110" stroke="#e8a77d" strokeDasharray="3 3" />
                               <path d={linePath} fill="none" stroke={`url(#line-${series.key})`} strokeWidth="3" />
                             </svg>
                           </div>
@@ -1453,7 +1455,7 @@ export default function Home() {
                           </div>
                         </div>
                       ) : (
-                        <div className="rounded-xl border border-[#d6e2f9] bg-[#f7faff] p-3">
+                        <div className="rounded-xl border border-[#f2d3c4] bg-[#fff7ef] p-3">
                           <p className="text-[11px] text-zinc-500">Point-in-time metric</p>
                           <p className="mt-1 text-xl font-semibold text-zinc-900">
                             {latestPoint ? formatSeriesValue(latestPoint.value, series.unit) : "No data"}
@@ -1466,12 +1468,12 @@ export default function Home() {
                 })}
 
                 {deepDiveDepartmentPanels ? (
-                  <section className="rounded-2xl border border-[#b9cdfa] bg-white p-3">
-                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#0046be]">
+                  <section className="rounded-2xl border border-[#efbf9c] bg-white p-3">
+                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#d53b00]">
                       {deepDiveDepartmentPanels.title}
                     </p>
                     <div className="mt-2">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#2457bc]">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#c84b13]">
                         Top
                       </p>
                       <div className="mt-2 flex gap-2 overflow-x-auto pb-2">
@@ -1480,7 +1482,7 @@ export default function Home() {
                           return (
                             <div
                               key={`dd-top-${department.department}`}
-                              className="min-w-[180px] rounded-xl border border-[#cfdcff] bg-[#f7faff] px-3 py-3"
+                              className="min-w-[180px] rounded-xl border border-[#f2d3c4] bg-[#fff7ef] px-3 py-3"
                             >
                               <div className="flex items-start gap-2">
                                 <span
@@ -1546,7 +1548,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={openChatFresh}
-                className="absolute bottom-20 right-5 z-30 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#ffe000] to-[#ffd100] text-[#08214a] shadow-[0_20px_40px_-20px_rgba(255,209,0,0.95)]"
+                className="absolute bottom-20 right-5 z-30 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#ffb300] to-[#ffd15c] text-[#3b160d] shadow-[0_20px_40px_-20px_rgba(255,179,0,0.8)]"
                 aria-label="Open chatbot"
               >
                 <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
@@ -1557,20 +1559,20 @@ export default function Home() {
           ) : null}
 
           {chatOpen ? (
-            <div className="absolute inset-x-0 bottom-0 top-[84px] z-50 bg-[#001235]/55" onClick={() => setChatOpen(false)}>
+            <div className="absolute inset-x-0 bottom-0 top-[84px] z-50 bg-[#471108]/55" onClick={() => setChatOpen(false)}>
               <section
-                className="absolute bottom-16 left-0 right-0 mx-auto flex h-[calc(100%-64px)] w-full flex-col rounded-t-[2rem] border border-[#b9cdfa] bg-white/95 p-4 shadow-[0_-20px_70px_-35px_rgba(0,29,107,0.65)] backdrop-blur"
+                className="absolute bottom-16 left-0 right-0 mx-auto flex h-[calc(100%-64px)] w-full flex-col rounded-t-[2rem] border border-[#efbf9c] bg-white/95 p-4 shadow-[0_-20px_70px_-35px_rgba(92,18,0,0.4)] backdrop-blur"
                 onClick={(event) => event.stopPropagation()}
               >
                 <div className="mb-3 flex items-center justify-between">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0046be]">Assistant</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#d53b00]">Assistant</p>
                     <h3 className="text-base font-semibold text-zinc-900">Contextual Store Bot</h3>
                   </div>
                   <button
                     type="button"
                     onClick={() => setChatOpen(false)}
-                    className="rounded-lg border border-[#cfdcff] bg-[#f7faff] px-2 py-1 text-xs text-[#27457f]"
+                    className="rounded-lg border border-[#f2d3c4] bg-[#fff7ef] px-2 py-1 text-xs text-[#8e3f1e]"
                   >
                     Close
                   </button>
@@ -1578,7 +1580,7 @@ export default function Home() {
 
                 <div
                   ref={listRef}
-                  className="min-h-0 flex-1 space-y-3 overflow-y-auto rounded-2xl border border-[#d6e2f9] bg-[#f7faff] p-3"
+                  className="min-h-0 flex-1 space-y-3 overflow-y-auto rounded-2xl border border-[#f2d3c4] bg-[#fff7ef] p-3"
                 >
                   {messages.map((message, index) => {
                     const isUser = message.role === "user";
@@ -1587,13 +1589,13 @@ export default function Home() {
                         <div
                           className={`max-w-[86%] whitespace-pre-wrap rounded-2xl px-3 py-2 text-sm leading-6 ${
                             isUser
-                              ? "bg-gradient-to-br from-[#0046be] to-[#001e73] text-white"
-                              : "bg-white text-zinc-900 ring-1 ring-[#d6e2f9]"
+                              ? "bg-gradient-to-br from-[#f05a00] to-[#8f1d00] text-white"
+                              : "bg-white text-zinc-900 ring-1 ring-[#f2d3c4]"
                           }`}
                         >
                           {message.content}
                           {!isUser && message.sql ? (
-                            <details className="mt-2 rounded-lg bg-[#f7faff] px-2 py-1 text-xs text-zinc-700">
+                            <details className="mt-2 rounded-lg bg-[#fff7ef] px-2 py-1 text-xs text-zinc-700">
                               <summary className="cursor-pointer">View SQL</summary>
                               <pre className="mt-1 whitespace-pre-wrap">{message.sql}</pre>
                             </details>
@@ -1605,7 +1607,7 @@ export default function Home() {
 
                   {isSending ? (
                     <div className="flex justify-start">
-                      <div className="max-w-[86%] rounded-2xl bg-white px-3 py-2 text-sm leading-6 text-zinc-900 ring-1 ring-[#d6e2f9]">
+                      <div className="max-w-[86%] rounded-2xl bg-white px-3 py-2 text-sm leading-6 text-zinc-900 ring-1 ring-[#f2d3c4]">
                         <span className="inline-flex items-center gap-1">
                           <span>Thinking</span>
                           <span className="animate-pulse">...</span>
@@ -1615,8 +1617,8 @@ export default function Home() {
                   ) : null}
 
                   {messages.length === 1 && messages[0]?.role === "assistant" ? (
-                    <div className="rounded-xl border border-[#d6e2f9] bg-white p-2">
-                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0046be]">
+                    <div className="rounded-xl border border-[#f2d3c4] bg-white p-2">
+                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#d53b00]">
                         Suggested Queries
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -1625,7 +1627,7 @@ export default function Home() {
                             key={bubble}
                             type="button"
                             onClick={() => void sendMessage(bubble)}
-                            className="rounded-full border border-[#cfdcff] bg-[#e8f0ff] px-3 py-1.5 text-xs font-semibold text-[#0046be]"
+                            className="rounded-full border border-[#f2d3c4] bg-[#fff0e5] px-3 py-1.5 text-xs font-semibold text-[#d53b00]"
                           >
                             {bubble}
                           </button>
@@ -1640,19 +1642,19 @@ export default function Home() {
                     event.preventDefault();
                     void sendMessage(input);
                   }}
-                  className="mt-3 border-t border-[#d6e2f9] pt-3"
+                  className="mt-3 border-t border-[#f2d3c4] pt-3"
                 >
                   <div className="flex gap-2">
                     <input
                       value={input}
                       onChange={(event) => setInput(event.target.value)}
                       placeholder="Ask about this dashboard..."
-                      className="flex-1 rounded-xl border border-[#9db6ea] bg-[#f7faff] px-3 py-2 text-sm text-zinc-900 outline-none focus:border-[#0046be]"
+                  className="flex-1 rounded-xl border border-[#e8a77d] bg-[#fff7ef] px-3 py-2 text-sm text-zinc-900 outline-none focus:border-[#f05a00]"
                     />
                     <button
                       type="button"
                       onClick={handleRecordToggle}
-                      className={`h-10 w-10 rounded-xl text-white ${isRecording ? "bg-[#001e73]" : "bg-[#0046be]"}`}
+                      className={`h-10 w-10 rounded-xl text-white ${isRecording ? "bg-[#8f1d00]" : "bg-[#f05a00]"}`}
                       disabled={isSending}
                       aria-label="Toggle recording"
                     >
@@ -1666,7 +1668,7 @@ export default function Home() {
                     </button>
                     <button
                       type="submit"
-                      className="rounded-xl bg-gradient-to-r from-[#ffe000] to-[#ffd100] px-3 py-2 text-sm font-semibold text-[#08214a] shadow-[0_10px_25px_-15px_rgba(255,209,0,0.85)]"
+                      className="rounded-xl bg-gradient-to-r from-[#ffb300] to-[#ffd15c] px-3 py-2 text-sm font-semibold text-[#3b160d] shadow-[0_10px_25px_-15px_rgba(255,179,0,0.7)]"
                       disabled={isSending}
                     >
                       Send
@@ -1679,16 +1681,16 @@ export default function Home() {
           ) : null}
 
           {settingsOpen ? (
-            <div className="absolute inset-x-0 bottom-0 top-[84px] z-50 bg-[#001235]/55" onClick={() => setSettingsOpen(false)}>
+            <div className="absolute inset-x-0 bottom-0 top-[84px] z-50 bg-[#471108]/55" onClick={() => setSettingsOpen(false)}>
               <section
-                className="absolute bottom-16 left-0 right-0 rounded-t-[2rem] border border-[#b9cdfa] bg-white/95 p-4"
+                className="absolute bottom-16 left-0 right-0 rounded-t-[2rem] border border-[#efbf9c] bg-white/95 p-4"
                 onClick={(event) => event.stopPropagation()}
               >
                 <h3 className="text-base font-semibold text-zinc-900">Settings</h3>
                 <p className="mt-1 text-xs text-zinc-600">
-                  Light mode active with Best Buy-inspired blue and yellow accents.
+                  Catalyst palette active with warm red, orange, and gold accents.
                 </p>
-                <div className="mt-3 rounded-xl border border-[#d6e2f9] bg-[#f7faff] p-3 text-xs text-zinc-700">
+                <div className="mt-3 rounded-xl border border-[#f2d3c4] bg-[#fff7ef] p-3 text-xs text-zinc-700">
                   <p>Role: {roleConfig.find((role) => role.id === selectedRole)?.label || "Not selected"}</p>
                   <p className="mt-1">Scope: {scopeLabel}</p>
                   <p className="mt-1">Period: {period}</p>
@@ -1697,12 +1699,12 @@ export default function Home() {
             </div>
           ) : null}
 
-          <nav className="absolute inset-x-0 bottom-0 z-[60] border-t border-[#c7d7f7] bg-white/95 px-4 pb-3 pt-2">
+          <nav className="absolute inset-x-0 bottom-0 z-[60] border-t border-[#f2d3c4] bg-white/95 px-4 pb-3 pt-2">
             <div className="mx-auto grid w-fit grid-cols-3 gap-3">
               <button
                 type="button"
                 onClick={handleBack}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#d6e2f9] bg-[#f7faff] text-[#27457f]"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#f2d3c4] bg-[#fff7ef] text-[#8e3f1e]"
                 aria-label="Back"
               >
                 <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
@@ -1717,7 +1719,7 @@ export default function Home() {
                   setSettingsOpen(false);
                   setViewLocation("__portfolio__");
                 }}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#ffe27a] bg-[#ffe000] text-[#08214a]"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#ffd07a] bg-[#ffb300] text-[#3b160d]"
                 aria-label="Home"
               >
                 <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
@@ -1730,7 +1732,7 @@ export default function Home() {
                   setSettingsOpen(true);
                   setChatOpen(false);
                 }}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#cfdcff] bg-[#0046be] text-white"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#f2d3c4] bg-[#d53b00] text-white"
                 aria-label="Settings"
               >
                 <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">

@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #eef3fb;
-  --foreground: #08214a;
-  --bb-blue: #0046be;
-  --bb-blue-deep: #001e73;
-  --bb-yellow: #ffe000;
-  --bb-surface: #f5f7fb;
-  --bb-card: #ffffff;
+  --background: #fff7ef;
+  --foreground: #3b160d;
+  --catalyst-red: #e10600;
+  --catalyst-orange: #f05a00;
+  --catalyst-gold: #ffc400;
+  --catalyst-surface: #fff1e6;
+  --catalyst-card: #fffaf5;
 }
 
 @theme inline {
@@ -19,7 +19,7 @@
 
 body {
   background:
-    radial-gradient(120% 100% at 20% -20%, #2b67d1 0%, #0d47b5 34%, #edf2fb 34.2%, #e4eaf5 100%);
+    radial-gradient(120% 100% at 20% -20%, #ffb54a 0%, #f05a00 28%, #e10600 46%, #fff7ef 46.2%, #ffeede 100%);
   color: var(--foreground);
   font-family: "Avenir Next", "Segoe UI", sans-serif;
   min-height: 100vh;
